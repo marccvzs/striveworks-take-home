@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export type Photo = {
   url: string;
-  id: string;
+  id: number;
   description: string;
   title: string;
   user: number;

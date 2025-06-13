@@ -1,7 +1,12 @@
 import DeleteButton from "@/app/_components/DeleteButton";
 import ImageCard from "@/app/_components/ImageCard";
-import { type Photo } from "@/app/_components/ImageContainer";
+import type { Photo } from "@/app/_components/ImageContainer";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+
+type PageProps = {
+  params: Promise<{ name: string }>
+}
 
 interface SingleImageResponse {
   message: string;
@@ -17,11 +22,20 @@ const getImage = async (name: string): Promise<SingleImageResponse | null> => {
   return data;
 };
 
+export async function generateMetadata({ params }: PageProps ): Promise<Metadata> {
+  const { name } = await params;
+
+  const data = await getImage(name);
+
+  return {
+    title: data?.photo.title
+  }
+}
+
+
 export default async function ImagePage({
   params,
-}: {
-  params: Promise<{ name: string }>;
-}) {
+}: PageProps) {
   // we would normally santize the param since it is user input
   const { name } = await params;
 

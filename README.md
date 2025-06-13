@@ -8,6 +8,19 @@ Header
 It has a simple input field in the header along with a file upload button. These components render client side due to click event nature of them. On upload, the click event calls a route hander to upload the file to an image server. The images are also stored in a database.
 The search input field works as mostly a server component. On submit a server action is fired that redirects the user to the image they input
 
+ImageContainer:
+Houses an array of JSX of ImageCards that the user will see on the homepage. This list of cards are also links to their individual pages.
+
+ImageCard:
+A reusable component to display Image information like name and title as well as the image.
+
+Forms:
+Search
+Takes an input from a user and fires a server action on submit. The server action will redirect to the individual card page.
+
+Simple
+Take a click event from a user to trigger a file upload. The component will only accept images. 
+
 Routes:
     /upload - method: POST
     /image/${id} - method: DELETE
