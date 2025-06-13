@@ -22,6 +22,7 @@ const ImageCard = ({
         height={height}
         width={width}
         alt={data?.title || `User image ${data?.id}`}
+        priority
       />
     </div>
   );

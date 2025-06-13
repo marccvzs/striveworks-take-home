@@ -1,9 +1,11 @@
 "use client";
 
+import { useImagesStore } from '@/providers/images-store-provider';
 import { startTransition, useRef } from 'react';
 
 const UploadButton = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+const { addToList, addToCount } = useImagesStore((state) => state);
 
   // handle the file upload on change
   // could use startTransition and a server action here
@@ -25,6 +27,9 @@ const UploadButton = () => {
       const data = await res.json();
 
       if (!(data.status === 200)) alert('Oops, there was an issue uploading your image');
+
+      addToList(data.image);
+      addToCount();
     });
   };
 

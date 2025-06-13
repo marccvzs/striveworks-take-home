@@ -15,7 +15,5 @@ export async function searchAction(prevState: any, formData: FormData) {
 
     const image = formData.get('image') as string;
 
-    console.log('[+] image: ', parseInt(image, 10));
-
     redirect(`/image/${image}`)
 }
