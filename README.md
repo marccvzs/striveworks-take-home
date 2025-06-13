@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-This demo took me approximately 8 hours to complete. 
+This demo took me approximately 8 hours to complete. This application utilizes various NextJs features,  most notably RSC (React Server Components), route handlers, and server actions.
 
 Components: 
 

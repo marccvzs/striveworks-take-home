@@ -3,7 +3,7 @@
 import { useActionState, startTransition } from "react";
 import { deleteAction } from "../action/deleteAction";
 
-const DeleteButton = ({ id }: { id: string }) => {
+const DeleteButton = ({ id }: { id: number }) => {
   const [state, action, isPending] = useActionState(deleteAction, null);
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -14,11 +14,15 @@ const DeleteButton = ({ id }: { id: string }) => {
     if (confirmed) {
         startTransition(() => {
             // for diversity, we will invoke a server action since this could conceivably be a mutation
-            action(id)
+            const payload = id.toString();
+            
+            // we should redirect if successful
+            action(payload)
         })
-
-      alert("Error deleting image!");
     }
+
+    // @ts-ignore
+    if (state?.error) alert("Error deleting image!");
   };
 
   return (

@@ -2,14 +2,18 @@
 
 import { redirect } from "next/navigation";
 
-export async function deleteAction(prevState: any, id: string) {
+export async function deleteAction(prevState: any, name: string) {
     
-    if (!id || typeof id !== 'number') return
+    if (!name || typeof name !== 'string') throw Error('Incorrect id.')
     
-    console.log('[+] id: ', id);
     // normally a mutation of the DB would happen here
-    // const res = await fetch(`http://localhost:3000/api/delete/${id}`)
+    const res = await fetch(`http://localhost:3000/api/image/${name}`, {
+        method: 'DELETE'
+    });
 
-    // const data = await res.json();
-    redirect('http://localhost:3000/');
+    const data = await res.json();
+
+    if (data?.status !== 200) throw Error('Failed to delete image.')
+
+    redirect('/');
 }

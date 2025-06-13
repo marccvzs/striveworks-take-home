@@ -6,21 +6,19 @@ export async function POST(req: NextRequest) {
     console.log('[+] image: ', image);
     if (!image) {
       return NextResponse.json(
-        { error: "Invalid file type" },
-        {
+        { error: "Invalid file type", 
           status: 400,
         }
       );
     }
 
-    return NextResponse.json(image, {
+    return NextResponse.json({image, 
       status: 200,
     });
   } catch (error) {
     console.error("Error uploading the file: ", error);
     return NextResponse.json(
-      { error: "Internal Server Error" },
-      { status: 500 }
+      { error: "Internal Server Error", status: 500 }
     );
   }
 }

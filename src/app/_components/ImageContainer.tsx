@@ -37,6 +37,7 @@ const ImageContainer = async () => {
         {`${mockImages?.total_photos || ""} images`}
       </span>
       <ul className="flex flex-row flex-wrap gap-8 items-center">
+
         {/* iterate over the map and return an array of JSX elements containing the link to the card page and the image card information */}
         {(mockImages?.photos || []).map((img) => (
           <li key={img.id} className="flex-1/3">
@@ -45,7 +46,10 @@ const ImageContainer = async () => {
             </Link>
           </li>
         ))}
+    
       </ul>
+
+      {/* A load more button and pagination could be added here in a client component */}
     </div>
   );
 };

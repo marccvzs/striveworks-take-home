@@ -32,7 +32,10 @@ export default async function ImagePage({
   return (
     <div className="m-8 p-6">
       <div className="flex flex-col gap-6 w-full">
+
+        {/* Delete is a client component */}
         <DeleteButton id={data?.photo?.id} />
+
         {/* demonstrates resuability */}
         <ImageCard data={data?.photo} height={500} width={500} />
       </div>
