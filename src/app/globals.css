@@ -5,6 +5,10 @@
   --foreground: #171717;
 }
 
+@theme {
+  --color-striveworks-purple: #661DBB;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
