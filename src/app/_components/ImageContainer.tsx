@@ -1,80 +1,46 @@
+import { notFound } from "next/navigation";
 import ImageCard from "./ImageCard";
 
-const images = [
-  {
-    id: 1,
-    url: "/window.svg",
-    title: "Example",
-    alt: "Example alt text",
-  },
-  {
-    id: 2,
-    url: "/file.svg",
-    title: "Example",
-    alt: "Example alt text",
-  },
-  {
-    id: 3,
-    url: "/globe.svg",
-    title: "Example",
-    alt: "Example alt text",
-  },
-  {
-    id: 4,
-    url: "/next.svg",
-    title: "Example",
-    alt: "Example alt text",
-  },
-  {
-    id: 5,
-    url: "/vercel.svg",
-    title: "Example",
-    alt: "Example alt text",
-  },
-  {
-    id: 6,
-    url: "/window.svg",
-    title: "Example",
-    alt: "Example alt text",
-  },
-  {
-    id: 7,
-    url: "/file.svg",
-    title: "Example",
-    alt: "Example alt text",
-  },
-  {
-    id: 8,
-    url: "/globe.svg",
-    title: "Example",
-    alt: "Example alt text",
-  },
-  {
-    id: 9,
-    url: "/next.svg",
-    title: "Example",
-    alt: "Example alt text",
-  },
-  {
-    id: 10,
-    url: "/vercel.svg",
-    title: "Example",
-    alt: "Example alt text",
-  },
-];
+export type Photo = {
+  url: string;
+  id: string;
+  description: string;
+  title: string;
+  user: number;
+}
 
-const ImageContainer = () => {
+export interface DataResponse {
+  success: boolean;
+  message: string;
+  total_photos: number;
+  photos: Array<Photo>;
+}
+
+const getData = async (): Promise<DataResponse | null> => {
+    const res = await fetch('http:/localhost:3000/api/images');
+
+    const data = await res.json();
+
+    return data;
+}
+
+const ImageContainer = async () => {
+  const mockImages = await getData();
+
+  // mockImages is null or undefined, show a not found page to the user
+  if (!mockImages?.success) return notFound();
+
   return (
     <div className="flex flex-col gap-6">
       <span className="text-black font-semibold text-shadow-company-purple text-2xl">
-        {`${images.length || ''} images`}
+        {`${mockImages?.total_photos || ''} images`}
       </span>
       <ul className="flex flex-row flex-wrap gap-8 items-center">
 
         {/* iterate over the map and return an array of JSX elements containing the image card information */}
-        {(images || []).map((img) => (
+        {(mockImages?.photos || []).map((img) => (
           <li key={img.id} className="flex-1/3">
-            <ImageCard data={img} height={50} width={50} />
+            <ImageCard data={img} height={200} width={200} />
           </li>
         ))}
 
