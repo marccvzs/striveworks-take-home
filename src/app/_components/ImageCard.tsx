@@ -17,9 +17,16 @@ const ImageCard = ({
   width: number;
 }) => {
   return (
-    <div className="flex flex-col items-center p-4 bg-white border border-company-purple rounded-lg hover:opacity-75 min-h-10">
-        <h2 className="text-company-purple font-semibold tracking-wide">{data?.title}</h2>
-      <Image src={data?.url} height={height} width={width} alt={data?.alt || `User image ${data?.id}`} />
+    <div className="flex flex-col items-center p-4 bg-white border border-company-purple rounded-lg hover:opacity-75 min-h-10 h-full">
+      <h2 className="text-company-purple font-semibold tracking-wide p-2">
+        {data?.title}
+      </h2>
+      <Image
+        src={data?.url}
+        height={height}
+        width={width}
+        alt={data?.alt || `User image ${data?.id}`}
+      />
     </div>
   );
 };
