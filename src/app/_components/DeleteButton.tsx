@@ -6,7 +6,7 @@ import { deleteAction } from "../action/deleteAction";
 const DeleteButton = ({ id }: { id: number }) => {
   const [state, action, isPending] = useActionState(deleteAction, null);
 
-  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = async () => {
     const confirmed = window.confirm(
       "You are about to delete this image. Do you want to proceed?"
     );
