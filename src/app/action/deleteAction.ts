@@ -15,5 +15,6 @@ export async function deleteAction(prevState: any, name: string) {
 
     if (data?.status !== 200) throw Error('Failed to delete image.')
 
+    // since we are not actually mutating a DB, we will still see the image on the redirect
     redirect('/');
 }

@@ -5,23 +5,26 @@ import { startTransition, useRef } from 'react';
 const UploadButton = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-    // handle the file upload on change
+  // handle the file upload on change
   // could use startTransition and a server action here
+  // i am just demonstrating variety here as server actions are demonstrated elsewhere in the application
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     startTransition(async () => {
       const file = e.target.files?.[0];
-
-      if (!file) return;
+  
+      if (!file || !file?.type?.startsWith('image/')) return;
 
       const formData = new FormData();
-      formData.set("image", file);
+      formData.append("image", file);
 
-      await fetch("/api/upload", {
+      const res = await fetch("/api/upload", {
         method: "POST",
         body: formData,
       });
 
-      // action(formData);
+      const data = await res.json();
+
+      if (!(data.status === 200)) alert('Oops, there was an issue uploading your image');
     });
   };
 
