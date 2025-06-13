@@ -127,7 +127,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/marccavazos/Development/striveworks-take-home/app/generated/prisma",
+      "value": "/Users/marccavazos/Development/take-home/app/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -141,7 +141,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/marccavazos/Development/striveworks-take-home/prisma/schema.prisma",
+    "sourceFilePath": "/Users/marccavazos/Development/take-home/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
