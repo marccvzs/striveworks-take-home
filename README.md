@@ -27,6 +27,26 @@ Routes:
     /images - method: GET
     /image/${name} - method: GET
 
+I left comments where I felt useful - My last 2 - 3 commits are the zustand instantiation
+Normally, I would not use a global state for this small of an application but I wanted to demonstrate that ability.
+I would have kept the source of truth with the apis ideally..
+
+I have implemented:
+Upload button - mock api response
+Search - individual image page
+Image count
+Zustand store 
+Delete function - mock api response
+
+Things I would love to add:
+    Better loading states
+    Update the list of images on upload
+    Load more - pagination
+    An actual DB instance - i wanted to implement prisma but was unsure of the 0 dependencies directive
+
+    Proper SEO
+    Extension sanitation 
+
 ## Getting Started
 
 First, run the development server:
